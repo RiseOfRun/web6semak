@@ -1,0 +1,30 @@
+   h1 {
+    font-size: 36px;
+    margin: 0;
+	color:black;
+   }
+   
+  .headercontainer {
+    position: fixed;
+    display: flex;
+    color: #000000;
+    width: 100%;
+    top: 0;
+	  line-height:50px;
+	  height:50px;
+    background: rgb(74,171,117);
+    background: linear-gradient(90deg, rgba(62,212,150,1) 0%, rgba(200,214,207,1) 100%);
+    padding: 5px;
+    padding-left: 15px;
+}
+
+.login {
+   text-decoration: none;
+   position:fixed;
+   color: black;
+   right: 30px;
+   font-size: 24px;
+} 
+.login:hover {
+  color: rgb(12, 126, 73);
+}
