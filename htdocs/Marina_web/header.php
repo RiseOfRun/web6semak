@@ -48,7 +48,7 @@ else
     
     </div>
 
-     <div class="rig"><a href="unlogin.php" class="loginmain">Выйти</a></div>
+     <div class="rig"><a href="logout.php" class="loginmain">Выйти</a></div>
 
 
 
