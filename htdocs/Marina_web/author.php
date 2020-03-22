@@ -16,7 +16,7 @@
 <body>
 <div class="headercontainer">
 	<div><h1>JUST DANCE!</h1></div>
-		<div><a href="login.php" class="login">Войти</a></div>
+		<div><a href="login.php" class="loginmain">Войти</a></div>
 	</div>
 	
 	<div class="headercontent">
@@ -29,7 +29,7 @@
 			<div class="onenew">
 				<div class="titleind"> Авторы</div>
 				<div class="onenewcontent"> 
-					<div class="imageblock"><img class="image" src="author.jpg" title="Леди Гага вернулась к танцам" ></div>
+					<div class="imageblock"><img class="image" src="author.jpg" title="Да, это мы" ></div>
 					<div class="textcontentaut"> 
 						<p><p>Дьячкова Марина <i>ПМ-73</i>
 						<br>Камынин Антон <i>ПM-71</i></p></p>

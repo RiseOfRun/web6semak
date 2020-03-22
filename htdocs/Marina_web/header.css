@@ -5,8 +5,8 @@
    }
    
   .headercontainer {
-    position: fixed;
     display: flex;
+    position: fixed;
     color: #000000;
     width: 100%;
     top: 0;
@@ -16,15 +16,38 @@
     background: linear-gradient(90deg, rgba(62,212,150,1) 0%, rgba(200,214,207,1) 100%);
     padding: 5px;
     padding-left: 15px;
-}
+  }
+  .middle{
+    position: fixed;
+    right: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-right: 140px;
+    font-size: 18px;
+    height: 60px;
+  }
+  .inmid{
+    position: relative;
+    text-decoration: none;
+    margin: 0px 0px 0px 0px;
+    font-size: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: right;
+    color: black;
+  }
+  .inmid:hover{
+    color:rgb(49, 119, 81);
+  }
+  .loginmain{
+    font-size: 24px;
+    text-decoration: none;
+    position: fixed;
+    right: 30px;
+    margin-top: 3px;
+    color: black;
+  }
 
-.login {
-   text-decoration: none;
-   position:fixed;
-   color: black;
-   right: 30px;
-   font-size: 24px;
-} 
-.login:hover {
-  color: rgb(12, 126, 73);
-}
+  .loginmain:hover{
+    color:rgb(49, 119, 81);
+  }
