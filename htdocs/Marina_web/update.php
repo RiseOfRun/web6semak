@@ -6,7 +6,7 @@ if (!empty($_SESSION['login']) and !empty($_SESSION['id']) and $_SESSION['admin'
 
     <div class="onenew">
         <form action="update.php?id=<?=$_GET['id']?>&w=update" method="POST">
-        <div class="logintitle">Добавление новости </div>
+        <div class="logintitle">Изменение Новостей </div>
         
         <div class="loginfield">
             <div class="logintext"> Заголовок</div>

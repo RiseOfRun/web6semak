@@ -1,4 +1,4 @@
-
+<?require("header.php");?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,17 +14,6 @@
 </head>
 
 <body>
-<div class="headercontainer">
-	<div><h1>JUST DANCE!</h1></div>
-		<div><a href="login.php" class="loginmain">Войти</a></div>
-	</div>
-	
-	<div class="headercontent">
-		<div class="sidemenu"> 
-			<div><a href="index.php" class="menu">На главную</a></div>
-			<div><a href="author.php" class="menu">Об авторах</a></div>
-		</div>
-		
 		<div class="newscontent"> 
 			<div class="onenew">
 				<div class="titleind"> Авторы</div>
@@ -37,10 +26,9 @@
 				</div>
 				<div><a href="index.php" class="more">Назад</a></div>
 			</div>
-			
 		</div>
-	
 	</div>
+</div>
 
 	<div class="footer">
 		<h2>© Дьячкова М., Камынин А.</h2>

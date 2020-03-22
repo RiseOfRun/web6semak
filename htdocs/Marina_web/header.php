@@ -58,10 +58,12 @@ else
 	<div class="headercontent">
 		<div class="sidemenu"> 
 			<div><a href="index.php" class="menu">На главную</a></div>
-            <div><a href="author.php" class="menu">Об авторах</a></div>
             <? if (!empty($_SESSION['login']) and !empty($_SESSION['id']) and $_SESSION['admin']==1){?>
             <div><a href="add.php" class="menu">Добавить новость</a></div>
-            <div><a href="author.php" class="menu">Об авторах</a></div><?;}?>
+            <div><a href="author.php" class="menu">Об авторах</a></div>
+            <?}else {?>
+            <div><a href="author.php" class="menu">Об авторах</a></div>
+            <?}?>
 		</div>
 		
 		<div class="newscontent">

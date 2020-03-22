@@ -1,6 +1,6 @@
 <? 
-session_start();
-require("functions.php");
+// require("functions.php");
+require("header.php");
 $link=mysqli_connect('localhost', 'root', '', 'mybase');
 if ($link->connect_errno){
 	echo "Unable to connect to MySQL: (" . $mysqli->connect_errno . ")" . $mysqli->connect_errno;
@@ -22,18 +22,7 @@ if ($link->connect_errno){
        <meta name="author" content="HTML5BOOK">
 </head>
 
-<body>
-<div class="headercontainer">
-	<div><h1>JUST DANCE!</h1></div>
-		<div><a href="login.php" class="loginmain">Войти</a></div>
-	</div>
-	
-	<div class="headercontent">
-		<div class="sidemenu"> 
-			<div><a href="index.php" class="menu">На главную</a></div>
-			<div><a href="author.php" class="menu">Об авторе</a></div>
-		</div>
-		
+<body>	
 		<div class="newscontent"> 
 		<?
 			$res=show_one($link,$_GET['id']);
@@ -51,8 +40,8 @@ if ($link->connect_errno){
 			</div>
 			<? };?>
 		</div>
-	
 	</div>
+</div>
 
 	<div class="footer">
 		<h2>© Дьячкова М., Камынин А.</h2>
