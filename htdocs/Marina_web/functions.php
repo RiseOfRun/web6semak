@@ -92,13 +92,14 @@
         else {
             $p=$_SESSION['id'];
 
-            if($stmt=$link->prepare("INSERT into news (title) VALUES (?))")){
+            if($stmt=$link->prepare("INSERT into news (title,d,stext,ftext,img) VALUES (?,?,?,?,?)")){
 
                 /* связываем параметры с метками */
-                mysqli_stmt_bind_param($stmt, "ssssss", $p,$title, $d, $stext,$ftext, $img);
+                // mysqli_stmt_bind_param($stmt, "ssssss", $p,$title, $d, $stext,$ftext, $img);
+                $stmt->bind_param("sssss",$title, $d, $stext,$ftext,$img);
             
                 /* запускаем запрос */
-                mysqli_stmt_execute($stmt);
+                $stmt->execute();
                 return "Успешно добавлено";
             exit(0);
             }
