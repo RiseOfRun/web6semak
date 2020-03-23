@@ -1,12 +1,11 @@
-<?php
-    
-
+<?
     function show_news($link){
         $result = mysqli_query($link, "SELECT * FROM news order by d desc") or die("Ошибка " . mysqli_error($link)); 
         return $result;
     }
     function show_one($link,$id){
         $result = mysqli_query($link, "SELECT * FROM news WHERE id=$id") or die("Ошибка " . mysqli_error($link)); 
+        if($result->num_rows!=1) {die();}
         return $result;
     }
     function login($link){
@@ -93,10 +92,19 @@
         else {
             $p=$_SESSION['id'];
 
-            $link->query("INSERT into news (id_user,title,d,stext,ftext,img) VALUES ('$p','$title', '$d', '$stext','$ftext', '$img')");
-            return "Успешно добавлено";
+            if($stmt=$link->prepare("INSERT into news (title) VALUES (?))")){
+
+                /* связываем параметры с метками */
+                mysqli_stmt_bind_param($stmt, "ssssss", $p,$title, $d, $stext,$ftext, $img);
+            
+                /* запускаем запрос */
+                mysqli_stmt_execute($stmt);
+                return "Успешно добавлено";
             exit(0);
+            }
+            else return "Ошибка запроса";
         }
+            
     }
 
     function update($link,$id){
@@ -136,17 +144,54 @@
         }
        
         else {
-            if (!empty($title))
-            $link->query("UPDATE news SET title='$title' WHERE news.id='$id'");
-            if (!empty($d))
-            $link->query("UPDATE news SET d='$d' WHERE news.id='$id'");
-            if (!empty($stext))
-            $link->query("UPDATE news SET stext='$stext' WHERE news.id='$id'");
-            if (!empty($ftext))
-            $link->query("UPDATE news SET ftext='$ftext' WHERE news.id='$id'");
-            if (!empty($img))
-            $link->query("UPDATE news SET img='$img' WHERE news.id='$id'");
-            return "Успешно изменено";
+            $flag=1;
+            if (!empty($title)){
+                if($stmt=$link->prepare("UPDATE news SET title='?' WHERE news.id='?'")){
+
+                    /* связываем параметры с метками */
+                    mysqli_stmt_bind_param($stmt,"sd",$title,$id);
+                    mysqli_stmt_execute($stmt);
+                }
+                else $flag=0;                
+            }
+            if (!empty($title)){
+                if($stmt=$link->prepare("UPDATE news SET d='?' WHERE news.id='?'")){
+
+                    /* связываем параметры с метками */
+                    mysqli_stmt_bind_param($stmt,"sd",$d,$id);
+                    mysqli_stmt_execute($stmt);
+                }
+                else $flag=0;                
+            }
+            if (!empty($stext)){
+                if($stmt=$link->prepare("UPDATE news SET stext='?' WHERE news.id='?'")){
+
+                    /* связываем параметры с метками */
+                    mysqli_stmt_bind_param($stmt,"sd",$stext,$id);
+                    mysqli_stmt_execute($stmt);
+                }
+                else $flag=0;                
+            }
+            if (!empty($ftext)){
+                if($stmt=$link->prepare("UPDATE news SET ftext='?' WHERE news.id='?'")){
+
+                    /* связываем параметры с метками */
+                    mysqli_stmt_bind_param($stmt,"sd",$ftext,$id);
+                    mysqli_stmt_execute($stmt);
+                }
+                else $flag=0;                
+            }
+            if (!empty($img)){
+                if($stmt=$link->prepare("UPDATE news SET img='?' WHERE news.id='?'")){
+
+                    /* связываем параметры с метками */
+                    mysqli_stmt_bind_param($stmt,"sd",$img,$id);
+                    mysqli_stmt_execute($stmt);
+                }
+                else $flag=0;                
+            }
+            if ($flag==1)return "Успешно изменено";
+            else return "Ошибка запроса";
             exit(0);
         }
     }
