@@ -25,6 +25,8 @@ if ($link->connect_errno){
 <body>	
 		<div class="newscontent"> 
 		<?
+			if(!array_key_exists("id",$_GET));
+			$id=(int) $_GET['id'];
 			$res=show_one($link,$_GET['id']);
 			while($oneres = $res->fetch_assoc()) {?>
 			<div class="onenew">

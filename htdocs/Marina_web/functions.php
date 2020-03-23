@@ -25,9 +25,18 @@
             return "Заполните все поля";
             exit (1);
         }
-        
-        $result = mysqli_query($link,"SELECT * FROM users WHERE login='$login'");
-        $myrow = mysqli_fetch_array($result);
+
+        $stmt = $link->prepare("SELECT * FROM users WHERE login=?");
+        /* связываем параметры с метками */
+        $stmt->bind_param("s", $login);
+    
+        /* запускаем запрос */
+        $stmt->execute();
+    
+        /* связываем переменные с результатами запроса */
+        $result = $stmt->get_result();
+
+        $myrow = $result->fetch_assoc();
         if (empty($myrow['login']))
         {
             return "Введен некорректный логин или пароль.";
@@ -92,12 +101,10 @@
         else {
             $p=$_SESSION['id'];
 
-            if($stmt=$link->prepare("INSERT into news (title,d,stext,ftext,img) VALUES (?,?,?,?,?)")){
+            if($stmt=$link->prepare("INSERT into news (id_user,title,d,stext,ftext,img) VALUES (?,?,?,?,?,?)")){
 
                 /* связываем параметры с метками */
-                // mysqli_stmt_bind_param($stmt, "ssssss", $p,$title, $d, $stext,$ftext, $img);
-                $stmt->bind_param("sssss",$title, $d, $stext,$ftext,$img);
-            
+                $stmt->bind_param("dsssss",$p,$title, $d, $stext,$ftext,$img);
                 /* запускаем запрос */
                 $stmt->execute();
                 return "Успешно добавлено";
@@ -147,46 +154,47 @@
         else {
             $flag=1;
             if (!empty($title)){
-                if($stmt=$link->prepare("UPDATE news SET title='?' WHERE news.id='?'")){
+                if($stmt=$link->prepare("UPDATE news SET title=? WHERE news.id=?")){
 
                     /* связываем параметры с метками */
-                    mysqli_stmt_bind_param($stmt,"sd",$title,$id);
+                    mysqli_stmt_bind_param($stmt,"ss",$title,$id);
                     mysqli_stmt_execute($stmt);
                 }
                 else $flag=0;                
             }
             if (!empty($title)){
-                if($stmt=$link->prepare("UPDATE news SET d='?' WHERE news.id='?'")){
+                if($stmt=$link->prepare("UPDATE news SET d=? WHERE news.id=?")){
 
                     /* связываем параметры с метками */
-                    mysqli_stmt_bind_param($stmt,"sd",$d,$id);
+                    mysqli_stmt_bind_param($stmt,"ss",$d,$id);
                     mysqli_stmt_execute($stmt);
                 }
                 else $flag=0;                
             }
             if (!empty($stext)){
-                if($stmt=$link->prepare("UPDATE news SET stext='?' WHERE news.id='?'")){
+                if($stmt=$link->prepare("UPDATE news SET stext=? WHERE news.id=?")){
 
                     /* связываем параметры с метками */
-                    mysqli_stmt_bind_param($stmt,"sd",$stext,$id);
+                    print($id);
+                    $stmt->bind_param("ss",$stext,$id);
                     mysqli_stmt_execute($stmt);
                 }
                 else $flag=0;                
             }
             if (!empty($ftext)){
-                if($stmt=$link->prepare("UPDATE news SET ftext='?' WHERE news.id='?'")){
+                if($stmt=$link->prepare("UPDATE news SET ftext=? WHERE news.id=?")){
 
                     /* связываем параметры с метками */
-                    mysqli_stmt_bind_param($stmt,"sd",$ftext,$id);
+                    mysqli_stmt_bind_param($stmt,"ss",$ftext,$id);
                     mysqli_stmt_execute($stmt);
                 }
                 else $flag=0;                
             }
             if (!empty($img)){
-                if($stmt=$link->prepare("UPDATE news SET img='?' WHERE news.id='?'")){
+                if($stmt=$link->prepare("UPDATE news SET img=? WHERE news.id=?")){
 
                     /* связываем параметры с метками */
-                    mysqli_stmt_bind_param($stmt,"sd",$img,$id);
+                    mysqli_stmt_bind_param($stmt,"ss",$img,$id);
                     mysqli_stmt_execute($stmt);
                 }
                 else $flag=0;                
@@ -232,8 +240,9 @@
         if ($myrow==NULL)
         {
 
-            $sql = "INSERT into users(login,fio,password,admin) values('$login','$fio','$password',0)";
-            mysqli_query($link,$sql);
+            $stmt = $link->prepare("INSERT into users(login,fio,password,admin) values(?,?,?,0)");
+            $stmt->bind_param("ssss",$login, $fio,$password,$admin);
+            $stmt->execute();
             header("Location: index.php");
             exit(0);
         }
