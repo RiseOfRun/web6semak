@@ -1,6 +1,8 @@
 <?require("header.php");
 			
 			$res=show_news($link);
+
+			
 			while($row = $res->fetch_assoc()) {?>
 
 				<div class="onenew">
@@ -8,7 +10,7 @@
 					</div>
 					<div class="title"><?=$row['title']?> </div>
 					<div class="onenewcontent"> 
-						<div class="imageblock"><img class="image" src=<?=$row['img']?> title= <?=$row['title']?> ></div>
+						<div class="imageblock"><a class="test-popup-link" href=<?=$row['img']?>><img src=<?=$row['img']?> width=300> </a></div>
 						<div class="textcontent"> 
 							<p><?=$row['stext']?></p>
 						</div>
@@ -24,9 +26,27 @@
 					</div>
 				</div>
 			<?}?>
+			
+
+			<div class="gallery">		
+    <a href="news1.jpg">Open image 1</a>
+    <a href="news2.jpg"></a>
+</div>
 
 		</div>	
 	</div>
+	</div>
+
+	<script>
+        $(document).ready(function() {
+        $('.image-link').magnificPopup({type:'image'});
+        });
+
+        $('.test-popup-link').magnificPopup({
+        type: 'image'
+        // other options
+        });
+        </script>
 
 
 	<div class="footer">

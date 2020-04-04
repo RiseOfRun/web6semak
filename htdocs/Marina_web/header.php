@@ -26,6 +26,15 @@ else
     <link rel="stylesheet" href="login.css">
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=0">
     <meta name="author" content="HTML5BOOK">
+
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <!-- Magnific Popup core JS file -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
 </head>
 
 <body>
@@ -67,3 +76,4 @@ else
 		</div>
 		
 		<div class="newscontent">
+
