@@ -3,7 +3,9 @@
     padding: 10px 10px 10px 10px;
 	background: #f5f5f5;
     margin-bottom: 10px;
+    position: none;
 }
+
 .date{
 	font-style: italic;
 	font-size: 16px;
@@ -39,8 +41,9 @@
 .imageblockind{
     max-width: 600px;
 }
-/* .textcontent{
-}  */
+.textcontent{
+    max-width:700px;
+} 
 .textcontentaut{
     font-size: 18px;
 }

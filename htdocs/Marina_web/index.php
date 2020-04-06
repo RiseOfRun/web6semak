@@ -1,16 +1,20 @@
-<?require("header.php");
+ <?require("header.php");
 			
 			$res=show_news($link);
 
-			
-			while($row = $res->fetch_assoc()) {?>
+			?>
+			<div class="my-slider" >
+
+			<?
+			 while($row = $res->fetch_assoc()) {?>
 
 				<div class="onenew">
 					<div class ="date"><?=$row['d']?>
 					</div>
 					<div class="title"><?=$row['title']?> </div>
 					<div class="onenewcontent"> 
-						<div class="imageblock"><a class="test-popup-link" href=<?=$row['img']?>><img src=<?=$row['img']?> width=300> </a></div>
+						<div class="imageblock"><img class="image" src=<?=$row['img']?> title= <?=$row['title']?> ></div>
+						
 						<div class="textcontent"> 
 							<p><?=$row['stext']?></p>
 						</div>
@@ -26,27 +30,23 @@
 					</div>
 				</div>
 			<?}?>
-			
 
-			<div class="gallery">		
-    <a href="news1.jpg">Open image 1</a>
-    <a href="news2.jpg"></a>
-</div>
-
+			</div>
 		</div>	
-	</div>
 	</div>
 
 	<script>
-        $(document).ready(function() {
-        $('.image-link').magnificPopup({type:'image'});
-        });
+	$(document).ready(function(){
+	$('.my-slider').slick({
+		infinite: true,
+		dots: true,
+ 	 autoplay: true,
+  	useTransform: false,
+  	autoplaySpeed: 2000,
+	});
 
-        $('.test-popup-link').magnificPopup({
-        type: 'image'
-        // other options
-        });
-        </script>
+});
+</script>
 
 
 	<div class="footer">

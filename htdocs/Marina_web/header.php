@@ -29,12 +29,17 @@ else
 
     <!-- Magnific Popup core CSS file -->
     <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="slick/slick-theme.css">
+    <link rel="stylesheet" href="slick/slick.css"> 
+    <link href="slick/ajax-loader.gif"> 
 
     <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
     <script src="js/jquery-3.4.1.min.js"></script>
 
     <!-- Magnific Popup core JS file -->
     <script src="js/jquery.magnific-popup.min.js"></script>
+
+    <script src="slick/slick.min.js"></script>
 </head>
 
 <body>
@@ -74,6 +79,5 @@ else
             <div><a href="author.php" class="menu">Об авторах</a></div>
             <?}?>
 		</div>
-		
 		<div class="newscontent">
 

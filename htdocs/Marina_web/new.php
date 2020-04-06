@@ -31,7 +31,7 @@ if ($link->connect_errno){
 				<div class ="date"><?=$oneres['d']?></div>
 				<div class="titleind"><?=$oneres['title']?></div>
 				<div class="onenewcontent"> 
-					<div class="imageblockind"><a class="test-popup-link" href=<?=$oneres['img']?>><img src=<?=$oneres['img']?> width=300> </a></div>
+					<div class="imageblockind"><a class="image-link" href=<?=$oneres['img']?>><img src=<?=$oneres['img']?> width=300> </a></div>
 					<!-- <div class="imageblockind"><img class="image" src=<?=$oneres['img']?> title=<?=$oneres['title']?> ></div> -->
 					<div class="textcontent"> 
 						<p><?=$oneres['ftext']?></p>
@@ -48,18 +48,7 @@ if ($link->connect_errno){
 <script>
         $(document).ready(function() {
         $('.image-link').magnificPopup({type:'image'});
-        });
-
-        // This will create a single gallery from all elements that have class "gallery-item"
-		$('.gallery').each(function() { // the containers for all your galleries
-    	$(this).magnificPopup({
-        delegate: 'a', // the selector for gallery item
-        type: 'image',
-        gallery: {
-          enabled:true
-        }
-    	});
-	});
+		});
     </script>
 
 
