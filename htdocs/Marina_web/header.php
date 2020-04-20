@@ -14,70 +14,103 @@ else
 ?>
 
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>JUST DANCE!</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="header.css">
-	<link rel="stylesheet" href="sidemenu.css">
-	<link rel="stylesheet" href="new.css">
-	<link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="login.css">
-	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=0">
-    <meta name="author" content="HTML5BOOK">
 
-    <!-- Magnific Popup core CSS file -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="slick/slick-theme.css">
-    <link rel="stylesheet" href="slick/slick.css"> 
-    <link href="slick/ajax-loader.gif"> 
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Category - Philosophy</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
-    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Magnific Popup core JS file -->
-    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
 
-    <script src="slick/slick.min.js"></script>
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 
-<body>
-	<div class="headercontainer">
-    <div><h1>JUST DANCE!</h1></div>
     
-    <? if (empty($_SESSION['login']) or empty($_SESSION['id'])){?>
-    
-    <div class="middle">
-         <div><a href="registration.php" class="inmid">Регистрация</a></div>
-         
-    </div>
 
-    <div class="rig"><a href="login.php" class="loginmain">Войти</a></div>
-    <?}
-    else{?>
-    <div class="middle">
-        <div class="inmid"><?=$_SESSION['fio']?>   </div>
-        <div class="inmid"> <?=$_SESSION['login']?>   </div>
-    
-    </div>
+<body id="top">
 
-     <div class="rig"><a href="logout.php" class="loginmain">Выйти</a></div>
+    <!-- pageheader
+    ================================================== -->
+    <div class="s-pageheader">
+
+        <header class="header">
+            <div class="header__content row">
+
+                <div class="header__logo">
+                    <a class="logo" href="index.html">
+                        <img src="images/logo.svg" alt="Homepage">
+                    </a>
+                </div> <!-- end header__logo -->
+
+                <ul class="header__social">
+                    <li>
+                        <a href="https://facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://pinterest.com"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                    </li>
+                </ul> <!-- end header__social -->
 
 
+                <? if (empty($_SESSION['login']) or empty($_SESSION['id'])){?>
+                <a class="header__search-trigger1" href="login.php">Login</a>
 
+                <a class="header__search-trigger2" href="registration.php">Registration</a><?}
+                else{?>
+                        <div color="red" class="header__search-trigger2" href="#0"><?=$_SESSION['login']?></div>
+                        <a class="header__search-trigger1" href="logout.php">Logout</a>
+                <?}?>
+                
 
-    <?;}?>
-	</div>
-	<div class="headercontent">
-		<div class="sidemenu"> 
-			<div><a href="index.php" class="menu">На главную</a></div>
-            <? if (!empty($_SESSION['login']) and !empty($_SESSION['id']) and $_SESSION['admin']==1){?>
-            <div><a href="add.php" class="menu">Добавить новость</a></div>
-            <div><a href="author.php" class="menu">Об авторах</a></div>
-            <?}else {?>
-            <div><a href="author.php" class="menu">Об авторах</a></div>
-            <?}?>
-		</div>
-		<div class="newscontent">
+                <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
 
+                <nav class="header__nav-wrap">
+
+                    <h2 class="header__nav-heading h6">Site Navigation</h2>
+
+                    <ul class="header__nav">
+                        <li><a href="index.php" title="">Home</a></li>
+                        <li><a href="author.php" title="">Authors</a></li>
+
+                        
+                        
+                        <?if (!empty($_SESSION['login']) and !empty($_SESSION['id']) and $_SESSION['admin']==1){?>
+                            <li><a href="add.php" class="menu">Добавить Новость</a></li>
+							<?}?>
+                    </ul> <!-- end header__nav -->
+
+                    <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+                </nav> <!-- end header__nav-wrap -->
+
+            </div> <!-- header-content -->
+        </header> <!-- header -->
+
+    </div> <!-- end s-pageheader -->
